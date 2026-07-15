@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <PackageId>AureEx</PackageId>
+    <Version>0.1.0</Version>
+    <Authors>AureEX</Authors>
+    <Description>SDK oficial da API AureEX para .NET (tipado via OpenAPI)</Description>
+    <PackageProjectUrl>https://api.aure-ex.com/docs/sdks</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/grupojrx/aure-ex-dotnet</RepositoryUrl>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Include="..\README.md" Pack="true" PackagePath="\" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="Polly" Version="8.5.2" />
+  </ItemGroup>
+  <PropertyGroup>
+    <!-- Código gerado pelo OpenAPI Generator (nullable / const boolean) -->
+    <NoWarn>$(NoWarn);CS8625;CS8714;CS8618</NoWarn>
+  </PropertyGroup>
+</Project>

@@ -1,0 +1,71 @@
+# NuGet Trusted Publishing (OIDC): org grupojrx, repo aure-ex-dotnet, workflow publish.yml
+# Só publica se o SDK mudou. Sem NUGET_API_KEY de longa duração.
+name: Publish NuGet
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  id-token: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Setup Node
+        uses: actions/setup-node@v5
+        with:
+          node-version: '22'
+
+      - name: Should publish?
+        id: decide
+        run: |
+          set +e
+          node scripts/should-publish.mjs
+          code=$?
+          set -e
+          if [ "$code" -eq 10 ]; then
+            echo "publish=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          if [ "$code" -ne 0 ]; then
+            exit "$code"
+          fi
+          echo "publish=true" >> "$GITHUB_OUTPUT"
+
+      - name: Setup .NET
+        if: steps.decide.outputs.publish == 'true'
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+
+      - name: Pack
+        if: steps.decide.outputs.publish == 'true'
+        working-directory: AureEx
+        run: dotnet pack -c Release -o ../artifacts
+
+      - name: NuGet login (OIDC)
+        if: steps.decide.outputs.publish == 'true'
+        uses: NuGet/login@v1
+        id: login
+        with:
+          user: ${{ secrets.NUGET_USER || 'aureex' }}
+
+      - name: Push
+        if: steps.decide.outputs.publish == 'true'
+        working-directory: AureEx
+        run: |
+          dotnet nuget push ../artifacts/*.nupkg \
+            --api-key "${{ steps.login.outputs.NUGET_API_KEY }}" \
+            --source https://api.nuget.org/v3/index.json \
+            --skip-duplicate
+
+      - name: Skipped
+        if: steps.decide.outputs.publish != 'true'
+        run: echo "Nenhuma alteração no SDK .NET — publish ignorado."
