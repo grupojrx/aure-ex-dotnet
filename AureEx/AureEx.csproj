@@ -5,7 +5,7 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <PackageId>AureEx</PackageId>
-    <Version>0.1.0</Version>
+    <Version>0.1.2</Version>
     <Authors>AureEX</Authors>
     <Description>SDK oficial da API AureEX para .NET (tipado via OpenAPI)</Description>
     <PackageProjectUrl>https://api.aure-ex.com/docs/sdks</PackageProjectUrl>
