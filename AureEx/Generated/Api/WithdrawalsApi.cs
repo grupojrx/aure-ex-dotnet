@@ -64,6 +64,27 @@ namespace AureEx.Generated.Api
         /// <returns>ApiResponse of SuccessEnvelope</returns>
         ApiResponse<SuccessEnvelope> WithdrawalsGetWithHttpInfo(string id);
         /// <summary>
+        /// Payload request/response do saque USDT
+        /// </summary>
+        /// <remarks>
+        /// Retorna o request e o response da chamada de API que criou o saque. Retenção de 90 dias; após isso responde PAYLOAD_NOT_FOUND. 
+        /// </remarks>
+        /// <exception cref="AureEx.Generated.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Identificador ULID do recurso</param>
+        /// <returns>SuccessEnvelope</returns>
+        SuccessEnvelope WithdrawalsGetPayload(string id);
+
+        /// <summary>
+        /// Payload request/response do saque USDT
+        /// </summary>
+        /// <remarks>
+        /// Retorna o request e o response da chamada de API que criou o saque. Retenção de 90 dias; após isso responde PAYLOAD_NOT_FOUND. 
+        /// </remarks>
+        /// <exception cref="AureEx.Generated.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Identificador ULID do recurso</param>
+        /// <returns>ApiResponse of SuccessEnvelope</returns>
+        ApiResponse<SuccessEnvelope> WithdrawalsGetPayloadWithHttpInfo(string id);
+        /// <summary>
         /// Lista saques USDT
         /// </summary>
         /// <exception cref="AureEx.Generated.Client.ApiException">Thrown when fails to make API call</exception>
@@ -134,6 +155,29 @@ namespace AureEx.Generated.Api
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (SuccessEnvelope)</returns>
         System.Threading.Tasks.Task<ApiResponse<SuccessEnvelope>> WithdrawalsGetWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default);
+        /// <summary>
+        /// Payload request/response do saque USDT
+        /// </summary>
+        /// <remarks>
+        /// Retorna o request e o response da chamada de API que criou o saque. Retenção de 90 dias; após isso responde PAYLOAD_NOT_FOUND. 
+        /// </remarks>
+        /// <exception cref="AureEx.Generated.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Identificador ULID do recurso</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of SuccessEnvelope</returns>
+        System.Threading.Tasks.Task<SuccessEnvelope> WithdrawalsGetPayloadAsync(string id, System.Threading.CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// Payload request/response do saque USDT
+        /// </summary>
+        /// <remarks>
+        /// Retorna o request e o response da chamada de API que criou o saque. Retenção de 90 dias; após isso responde PAYLOAD_NOT_FOUND. 
+        /// </remarks>
+        /// <exception cref="AureEx.Generated.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Identificador ULID do recurso</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (SuccessEnvelope)</returns>
+        System.Threading.Tasks.Task<ApiResponse<SuccessEnvelope>> WithdrawalsGetPayloadWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Lista saques USDT
         /// </summary>
@@ -634,6 +678,141 @@ namespace AureEx.Generated.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("WithdrawalsGet", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Payload request/response do saque USDT Retorna o request e o response da chamada de API que criou o saque. Retenção de 90 dias; após isso responde PAYLOAD_NOT_FOUND. 
+        /// </summary>
+        /// <exception cref="AureEx.Generated.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Identificador ULID do recurso</param>
+        /// <returns>SuccessEnvelope</returns>
+        public SuccessEnvelope WithdrawalsGetPayload(string id)
+        {
+            AureEx.Generated.Client.ApiResponse<SuccessEnvelope> localVarResponse = WithdrawalsGetPayloadWithHttpInfo(id);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Payload request/response do saque USDT Retorna o request e o response da chamada de API que criou o saque. Retenção de 90 dias; após isso responde PAYLOAD_NOT_FOUND. 
+        /// </summary>
+        /// <exception cref="AureEx.Generated.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Identificador ULID do recurso</param>
+        /// <returns>ApiResponse of SuccessEnvelope</returns>
+        public AureEx.Generated.Client.ApiResponse<SuccessEnvelope> WithdrawalsGetPayloadWithHttpInfo(string id)
+        {
+            // verify the required parameter 'id' is set
+            if (id == null)
+                throw new AureEx.Generated.Client.ApiException(400, "Missing required parameter 'id' when calling WithdrawalsApi->WithdrawalsGetPayload");
+
+            AureEx.Generated.Client.RequestOptions localVarRequestOptions = new AureEx.Generated.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = AureEx.Generated.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = AureEx.Generated.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.PathParameters.Add("id", AureEx.Generated.Client.ClientUtils.ParameterToString(id)); // path parameter
+
+            // authentication (ApiKeyAuth) required
+            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Api-Key")))
+            {
+                localVarRequestOptions.HeaderParameters.Add("X-Api-Key", this.Configuration.GetApiKeyWithPrefix("X-Api-Key"));
+            }
+            // authentication (ApiSecretAuth) required
+            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Api-Secret")))
+            {
+                localVarRequestOptions.HeaderParameters.Add("X-Api-Secret", this.Configuration.GetApiKeyWithPrefix("X-Api-Secret"));
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<SuccessEnvelope>("/withdrawals/{id}/payload", localVarRequestOptions, this.Configuration);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("WithdrawalsGetPayload", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Payload request/response do saque USDT Retorna o request e o response da chamada de API que criou o saque. Retenção de 90 dias; após isso responde PAYLOAD_NOT_FOUND. 
+        /// </summary>
+        /// <exception cref="AureEx.Generated.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Identificador ULID do recurso</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of SuccessEnvelope</returns>
+        public async System.Threading.Tasks.Task<SuccessEnvelope> WithdrawalsGetPayloadAsync(string id, System.Threading.CancellationToken cancellationToken = default)
+        {
+            AureEx.Generated.Client.ApiResponse<SuccessEnvelope> localVarResponse = await WithdrawalsGetPayloadWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Payload request/response do saque USDT Retorna o request e o response da chamada de API que criou o saque. Retenção de 90 dias; após isso responde PAYLOAD_NOT_FOUND. 
+        /// </summary>
+        /// <exception cref="AureEx.Generated.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Identificador ULID do recurso</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (SuccessEnvelope)</returns>
+        public async System.Threading.Tasks.Task<AureEx.Generated.Client.ApiResponse<SuccessEnvelope>> WithdrawalsGetPayloadWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default)
+        {
+            // verify the required parameter 'id' is set
+            if (id == null)
+                throw new AureEx.Generated.Client.ApiException(400, "Missing required parameter 'id' when calling WithdrawalsApi->WithdrawalsGetPayload");
+
+
+            AureEx.Generated.Client.RequestOptions localVarRequestOptions = new AureEx.Generated.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+
+            var localVarContentType = AureEx.Generated.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = AureEx.Generated.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.PathParameters.Add("id", AureEx.Generated.Client.ClientUtils.ParameterToString(id)); // path parameter
+
+            // authentication (ApiKeyAuth) required
+            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Api-Key")))
+            {
+                localVarRequestOptions.HeaderParameters.Add("X-Api-Key", this.Configuration.GetApiKeyWithPrefix("X-Api-Key"));
+            }
+            // authentication (ApiSecretAuth) required
+            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Api-Secret")))
+            {
+                localVarRequestOptions.HeaderParameters.Add("X-Api-Secret", this.Configuration.GetApiKeyWithPrefix("X-Api-Secret"));
+            }
+
+            // make the HTTP request
+
+            var localVarResponse = await this.AsynchronousClient.GetAsync<SuccessEnvelope>("/withdrawals/{id}/payload", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("WithdrawalsGetPayload", localVarResponse);
                 if (_exception != null) throw _exception;
             }
 
