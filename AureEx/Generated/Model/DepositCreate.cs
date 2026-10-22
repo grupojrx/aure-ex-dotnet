@@ -100,7 +100,7 @@ namespace AureEx.Generated.Model
         /// <param name="method">method (required) (default to MethodEnum.Usdt).</param>
         /// <param name="amount">Valor em USDT, com até 6 casas decimais (ex.: 2500.123456). Mínimo de 10 USDT. Se o comprador enviar outro valor, o depósito é creditado pelo valor recebido. .</param>
         /// <param name="network">Rede USDT. &#x60;matic&#x60; é aceito como alias de &#x60;pol&#x60;. ETH, BSC e POL usam o mesmo endereço..</param>
-        /// <param name="expiration">Expiração do depósito (ISO 8601). Aceita de 10 minutos a 24 horas a partir da criação; valores fora da faixa são ajustados. Sem o campo, expira em 48 horas. .</param>
+        /// <param name="expiration">Expiração do depósito (ISO 8601). Aceita de 10 minutos a 24 horas a partir da criação; valores fora da faixa são ajustados. Sem o campo, expira em 24 horas. .</param>
         /// <param name="reference">reference (required).</param>
         /// <param name="callbackUrl">callbackUrl.</param>
         /// <param name="customer">customer.</param>
@@ -132,9 +132,9 @@ namespace AureEx.Generated.Model
         public decimal Amount { get; set; }
 
         /// <summary>
-        /// Expiração do depósito (ISO 8601). Aceita de 10 minutos a 24 horas a partir da criação; valores fora da faixa são ajustados. Sem o campo, expira em 48 horas. 
+        /// Expiração do depósito (ISO 8601). Aceita de 10 minutos a 24 horas a partir da criação; valores fora da faixa são ajustados. Sem o campo, expira em 24 horas. 
         /// </summary>
-        /// <value>Expiração do depósito (ISO 8601). Aceita de 10 minutos a 24 horas a partir da criação; valores fora da faixa são ajustados. Sem o campo, expira em 48 horas. </value>
+        /// <value>Expiração do depósito (ISO 8601). Aceita de 10 minutos a 24 horas a partir da criação; valores fora da faixa são ajustados. Sem o campo, expira em 24 horas. </value>
         [DataMember(Name = "expiration", EmitDefaultValue = false)]
         public DateTime Expiration { get; set; }
 
