@@ -51,9 +51,9 @@ namespace AureEx.Generated.Model
         [DataMember(Name = "method", IsRequired = true, EmitDefaultValue = true)]
         public MethodEnum Method { get; set; }
         /// <summary>
-        /// Rede USDT. &#x60;matic&#x60; é aceito como alias de &#x60;pol&#x60;. ETH, BSC e POL usam o mesmo endereço.
+        /// Rede USDT. &#x60;matic&#x60; é aceito como alias de &#x60;pol&#x60;. ETH, BSC e POL usam o mesmo endereço; envio por outra dessas três redes é creditado e o &#x60;network&#x60; do depósito passa a ser a rede real. 
         /// </summary>
-        /// <value>Rede USDT. &#x60;matic&#x60; é aceito como alias de &#x60;pol&#x60;. ETH, BSC e POL usam o mesmo endereço.</value>
+        /// <value>Rede USDT. &#x60;matic&#x60; é aceito como alias de &#x60;pol&#x60;. ETH, BSC e POL usam o mesmo endereço; envio por outra dessas três redes é creditado e o &#x60;network&#x60; do depósito passa a ser a rede real. </value>
         [JsonConverter(typeof(StringEnumConverter))]
         public enum NetworkEnum
         {
@@ -84,9 +84,9 @@ namespace AureEx.Generated.Model
 
 
         /// <summary>
-        /// Rede USDT. &#x60;matic&#x60; é aceito como alias de &#x60;pol&#x60;. ETH, BSC e POL usam o mesmo endereço.
+        /// Rede USDT. &#x60;matic&#x60; é aceito como alias de &#x60;pol&#x60;. ETH, BSC e POL usam o mesmo endereço; envio por outra dessas três redes é creditado e o &#x60;network&#x60; do depósito passa a ser a rede real. 
         /// </summary>
-        /// <value>Rede USDT. &#x60;matic&#x60; é aceito como alias de &#x60;pol&#x60;. ETH, BSC e POL usam o mesmo endereço.</value>
+        /// <value>Rede USDT. &#x60;matic&#x60; é aceito como alias de &#x60;pol&#x60;. ETH, BSC e POL usam o mesmo endereço; envio por outra dessas três redes é creditado e o &#x60;network&#x60; do depósito passa a ser a rede real. </value>
         [DataMember(Name = "network", EmitDefaultValue = false)]
         public NetworkEnum? Network { get; set; }
         /// <summary>
@@ -99,7 +99,7 @@ namespace AureEx.Generated.Model
         /// </summary>
         /// <param name="method">method (required) (default to MethodEnum.Usdt).</param>
         /// <param name="amount">Valor em USDT, com até 6 casas decimais (ex.: 2500.123456). Mínimo de 10 USDT. Se o comprador enviar outro valor, o depósito é creditado pelo valor recebido. .</param>
-        /// <param name="network">Rede USDT. &#x60;matic&#x60; é aceito como alias de &#x60;pol&#x60;. ETH, BSC e POL usam o mesmo endereço..</param>
+        /// <param name="network">Rede USDT. &#x60;matic&#x60; é aceito como alias de &#x60;pol&#x60;. ETH, BSC e POL usam o mesmo endereço; envio por outra dessas três redes é creditado e o &#x60;network&#x60; do depósito passa a ser a rede real. .</param>
         /// <param name="expiration">Expiração do depósito (ISO 8601). Aceita de 10 minutos a 24 horas a partir da criação; valores fora da faixa são ajustados. Sem o campo, expira em 24 horas. .</param>
         /// <param name="reference">reference (required).</param>
         /// <param name="callbackUrl">callbackUrl.</param>
